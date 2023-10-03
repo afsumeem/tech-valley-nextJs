@@ -5,11 +5,12 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { BiLogoGithub } from "react-icons/bi";
 import { BiLogoGoogle } from "react-icons/bi";
 import auth from "@/firebase/firebase.auth";
+import RootLayout from "@/components/Layouts/RootLayout";
 
 const LoginPage = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-  console.log(user);
+  // console.log(user);
 
   //
 
@@ -109,3 +110,7 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+LoginPage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};

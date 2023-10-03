@@ -1,3 +1,4 @@
+import RootLayout from "@/components/Layouts/RootLayout";
 import HeroSection from "@/components/UI/HeroSection";
 import Head from "next/head";
 
@@ -17,3 +18,7 @@ export default function Home() {
     </>
   );
 }
+
+Home.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};

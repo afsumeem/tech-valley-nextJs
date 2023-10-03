@@ -97,9 +97,11 @@ const Navbar = () => {
             {" "}
             {/* user sign in & sign up */}
             {!session?.user && (
-              <button className="text-slate-200 hover:text-white text-base hover:bg-slate-800 p-2 rounded transition duration-700 ">
-                Login
-              </button>
+              <Link href="/login">
+                <button className="text-slate-200 hover:text-white text-base hover:bg-slate-800 p-2 rounded transition duration-700 ">
+                  Login
+                </button>
+              </Link>
             )}
             {/* logout */}
             {session?.user && (
