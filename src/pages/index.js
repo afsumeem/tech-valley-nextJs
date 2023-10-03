@@ -1,4 +1,6 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import FeaturedCategories from "@/components/UI/FeaturedCategories";
+import FeaturedProducts from "@/components/UI/FeaturedProducts";
 import HeroSection from "@/components/UI/HeroSection";
 import Head from "next/head";
 
@@ -15,6 +17,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeroSection />
+      <FeaturedProducts />
+      <FeaturedCategories />
     </>
   );
 }
