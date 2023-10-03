@@ -1,9 +1,14 @@
 import React from "react";
 
-const FeaturedCategories = () => {
+const FeaturedCategories = ({ categories }) => {
+  console.log(categories);
   return (
     <div>
-      <h2>featured categories</h2>
+      <ul>
+        {categories.map((category, index) => (
+          <li key={index}>{category}</li>
+        ))}
+      </ul>
     </div>
   );
 };

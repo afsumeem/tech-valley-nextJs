@@ -1,6 +1,7 @@
 import React from "react";
 
-const FeaturedProducts = () => {
+const FeaturedProducts = ({ products }) => {
+  console.log(products.length);
   return (
     <div>
       <h2>featured products</h2>
