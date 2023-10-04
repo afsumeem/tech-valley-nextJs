@@ -7,16 +7,20 @@ import React from "react";
 const FilteredProducts = ({ products }) => {
   // console.log(products.length);
   return (
-    <div>
-      <h2 className="my-8 text-center font-bold text-4xl uppercase">
+    <div className="bg-slate-200">
+      <h2 className="py-8 text-center font-bold text-4xl uppercase">
         All products
       </h2>
-      <div className="col-span-9 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center w-full">
+      <div className="col-span-9 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center w-full pb-8">
         {products.map((product) => (
           <>
             <Link href={`/product/${product._id}`}>
-              <div key={product._id} className="flex justify-center">
-                <div className="card w-full bg-base-100 shadow-xl px-4 flex flex-row md:flex-col ">
+              <div
+                key={product._id}
+                className="flex justify-center "
+                style={{ minHeight: "600px" }}
+              >
+                <div className="card w-full bg-base-100 shadow-xl px-4  ">
                   <figure className="mt-4">
                     <Image
                       src={product.image}
