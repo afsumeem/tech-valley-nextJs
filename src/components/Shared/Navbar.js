@@ -1,9 +1,9 @@
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ categories }) => {
   const { data: session } = useSession();
-
+  console.log(categories);
   return (
     <nav className="navbar bg-black flex justify-between">
       <Link
@@ -24,17 +24,22 @@ const Navbar = () => {
 
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-950 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52"
           >
-            <li>
-              <Link
-                href="/cpu"
-                className="text-slate-200 hover:text-white text-base"
-              >
-                CPU / Processor
-              </Link>
-            </li>
-            <li>
+            {/* {categories.map((category) => ( */}
+            <>
+              <li>
+                <Link
+                  href=""
+                  className="text-slate-200 hover:text-white text-base"
+                >
+                  {/* {category} */}
+                </Link>
+              </li>
+            </>
+            {/* ))} */}
+
+            {/* <li>
               <Link
                 href="/motherboard"
                 className="text-slate-200 hover:text-white text-base"
@@ -81,7 +86,7 @@ const Navbar = () => {
               >
                 Others
               </Link>
-            </li>
+            </li> */}
           </ul>
         </details>
 
@@ -120,3 +125,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+//

@@ -22,7 +22,7 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     createUserWithEmailAndPassword(data.email, data.password);
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div className="bg-bgGradient min-h-screen flex  items-center">

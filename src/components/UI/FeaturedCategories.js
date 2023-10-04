@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 const FeaturedCategories = ({ categories }) => {
-  console.log(categories);
+  // console.log(categories);
   return (
     <div>
       {categories.map((category, index) => (
