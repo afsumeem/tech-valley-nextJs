@@ -11,7 +11,7 @@ const HeroSection = () => {
     >
       <div className="hero-overlay bg-opacity-70 bg-black"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
+        <div className="w-1/2">
           <h1 className="mb-5 text-6xl uppercase font-bold">Tech Valley</h1>
           <p className="mb-5">
             Introducing Tech Valley, Your Ultimate Destination for Custom PC
@@ -23,7 +23,11 @@ const HeroSection = () => {
             who crave power, performance, and precision in their computing
             devices.
           </p>
-          <button className="btn btn-primary">Build your own PC</button>
+          <Link href="/pcbuilder">
+            <button className="btn bg-black text-white hover:text-black  border-t-0  border-b-2 transition duration-500">
+              Build your own PC
+            </button>
+          </Link>
         </div>
       </div>
     </div>
