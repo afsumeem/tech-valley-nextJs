@@ -10,13 +10,13 @@ const FeaturedProducts = ({ products }) => {
         featured products
       </h2>
       <hr />
-      <div className="col-span-9 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center w-full pb-8 mt-4">
+      <div className="col-span-9 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center w-full ">
         {products.map((product) => (
           <>
             <Link href={`/product/${product._id}`}>
               <div key={product._id} className="flex justify-center ">
                 <div className="card md:card-side w-full bg-base-100 shadow-xl px-4  ">
-                  <figure className="mt-4 flex flex-col ">
+                  <figure className=" flex flex-col ">
                     <Image
                       src={product.image}
                       height={100}
