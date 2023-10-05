@@ -1,9 +1,14 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
+import ReactStars from "react-rating-stars-component";
+
+//
+
 const PCBuilder = ({ categories }) => {
   const selectedProducts = useSelector((state) => state.pcBuilder.products);
   const router = useRouter();
@@ -33,26 +38,59 @@ const PCBuilder = ({ categories }) => {
 
       <div className="mx-20 my-8">
         {categories?.map((category, i) => (
-          <div key={i} className="border-2 my-4 px-6 py-4">
-            <h2>{category}</h2>
+          <div
+            key={i}
+            className="border-2 my-4 px-6 py-4 flex flex-col md:flex-row justify-between gap-5 items-center"
+          >
+            <div className=" bg-slate-300 hover:bg-slate-500 transition duration-700 rounded-md hover:text-white h-24 w-28 text-center items-center flex justify-center hover:cursor-pointer">
+              <h3 className="font-bold p-4">{category}</h3>
+            </div>
             <div>
               {selectedProducts &&
                 selectedProducts[category]?.map((compo, i) => (
-                  <>
-                    <p>{compo.productName}</p>
-                  </>
+                  <div
+                    key={i}
+                    className="border border-slate-400 p-2 flex gap-4 justify-center items-center "
+                  >
+                    <div>
+                      <Image
+                        src={compo.image}
+                        height={50}
+                        width={50}
+                        alt="product"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-bold">{compo.productName}</p>
+                      <p>{compo.category}</p>
+                      <p className="my-2 font-semibold">${compo.price}</p>
+                      <ReactStars
+                        count={5}
+                        value={compo.averageRating}
+                        size={18}
+                        edit={false}
+                        isHalf={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        activeColor="#ffd700"
+                      />
+                    </div>
+                  </div>
                 ))}
             </div>
 
             <div>
               {!selectedProducts[category] ? (
                 <Link href={`pcbuilder/selectproduct/${category}`}>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                  <button className="btn bg-black text-white hover:text-black  border-t-0  border-b-2 transition duration-500">
                     Choose
                   </button>
                 </Link>
               ) : (
-                <div>Component Selected</div>
+                <div className="btn text-black cursor-not-allowed border-0 border-black bg-slate-200">
+                  Product Selected
+                </div>
               )}
             </div>
           </div>

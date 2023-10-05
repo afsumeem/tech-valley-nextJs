@@ -62,7 +62,7 @@ const SelectProduct = ({ products }) => {
                     className=" hover:bg-black hover:text-white text-black bg-slate-300 border-t-0 border-x-0 border-black rounded-md h-8 border-b-2 transition duration-500"
                     onClick={() => handleAddProduct(product)}
                   >
-                    ADD
+                    Add to builder
                   </button>
                 </div>
               </div>
