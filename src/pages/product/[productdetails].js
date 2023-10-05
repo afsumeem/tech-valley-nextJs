@@ -69,8 +69,8 @@ const ProductDetails = ({ product }) => {
           <div>
             <h3 className="font-bold uppercase">Reviews</h3>
             <div className="mt-4">
-              {reviews.map((review) => (
-                <>
+              {reviews.map((review, i) => (
+                <div key={i}>
                   <p className="italic"> - {review.comment}</p>
                   <div className="card-actions justify-end items-center mb-4">
                     <h2 className="font-semibold">{review.username}</h2>
@@ -87,7 +87,7 @@ const ProductDetails = ({ product }) => {
                     />
                   </div>
                   <hr />
-                </>
+                </div>
               ))}
             </div>
           </div>

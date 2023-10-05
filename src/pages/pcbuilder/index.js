@@ -1,36 +1,73 @@
+import RootLayout from "@/components/Layouts/RootLayout";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const PCBuilder = ({ categories }) => {
   const selectedProducts = useSelector((state) => state.pcBuilder.products);
+  console.log(selectedProducts);
   return (
     <div>
-      {categories?.map((category) => (
-        <>
-          <h2>{category}</h2>
-          <div>{selectedProducts && selectedProducts[category]}</div>
+      <div className="text-center my-4">
+        <h2 className="font-bold text-4xl uppercase">Build Your PC</h2>
+        <h5 className="text-xl mt-2">Select Your Components</h5>
+      </div>
 
-          {""}
+      <hr />
 
-          <div>
-            {!selectedProducts ? (
-              <Link href={`/selectProduct/${category}`}>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                  Choose
-                </button>
-              </Link>
-            ) : (
-              <div>Component Selected</div>
-            )}
+      <div className="mx-20 my-8">
+        {categories?.map((category, i) => (
+          <div key={i} className="border-2 my-4 px-6 py-4">
+            <h2>{category}</h2>
+            <div>
+              {selectedProducts &&
+                selectedProducts[category]?.map((compo, i) => (
+                  <>
+                    <p>{compo.title}</p>
+                  </>
+                ))}
+            </div>
+
+            <div>
+              {!selectedProducts[category] ? (
+                <Link href={`pcbuilder/selectproduct/${category}`}>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Choose
+                  </button>
+                </Link>
+              ) : (
+                <div>Component Selected</div>
+              )}
+            </div>
           </div>
-        </>
-      ))}
+        ))}
+      </div>
+
+      {Object.keys(selectedProducts).length >= 5 ? (
+        <div onClick={notify} className="flex justify-center m-5">
+          <button className=" btn bg-black text-white hover:text-black  border-t-0  border-b-2 transition duration-500 hover:border block m-auto">
+            Complete Build
+          </button>
+        </div>
+      ) : (
+        <div className="flex justify-center m-5">
+          <button className="btn bg-black text-white hover:text-black  border-t-0  border-b-2 transition duration-500 hover:border block m-auto cursor-not-allowed">
+            Complete Build
+          </button>
+        </div>
+      )}
+      {/* <button className="btn bg-black text-white hover:text-black  border-t-0  border-b-2 transition duration-500 hover:border block m-auto">
+        Complete Build
+      </button> */}
     </div>
   );
 };
 
 export default PCBuilder;
 
+//
+PCBuilder.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
 //
 
 export const getServerSideProps = async () => {

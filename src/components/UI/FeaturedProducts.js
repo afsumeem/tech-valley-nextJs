@@ -11,8 +11,8 @@ const FeaturedProducts = ({ products }) => {
       </h2>
       <hr />
       <div className="col-span-9 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center w-full ">
-        {products.map((product) => (
-          <>
+        {products.map((product, i) => (
+          <div key={i}>
             <Link href={`/product/${product._id}`}>
               <div key={product._id} className="flex justify-center ">
                 <div className="card md:card-side w-full bg-base-100 shadow-xl px-4  ">
@@ -55,7 +55,7 @@ const FeaturedProducts = ({ products }) => {
                 </div>
               </div>
             </Link>
-          </>
+          </div>
         ))}
       </div>
     </div>

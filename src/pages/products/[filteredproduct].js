@@ -12,8 +12,8 @@ const FilteredProducts = ({ products }) => {
         All products
       </h2>
       <div className="col-span-9 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center w-full pb-8">
-        {products.map((product) => (
-          <>
+        {products.map((product, i) => (
+          <div key={i}>
             <Link href={`/product/${product._id}`}>
               <div
                 key={product._id}
@@ -48,7 +48,7 @@ const FilteredProducts = ({ products }) => {
                 </div>
               </div>
             </Link>
-          </>
+          </div>
         ))}
       </div>
     </div>
