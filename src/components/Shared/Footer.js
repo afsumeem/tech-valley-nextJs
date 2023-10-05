@@ -4,9 +4,27 @@ import { BiLogoTwitter } from "react-icons/bi";
 import { BiLogoYoutube } from "react-icons/bi";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
   const { data: session } = useSession();
+
+  //
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      });
+  }, []);
+
+  const productCategories = categories.map((product) => product.category);
+  const uniqueCategories = productCategories.filter(
+    (category, index, currentVal) => currentVal.indexOf(category) === index
+  );
+
+  //
 
   return (
     <footer className="bg-black ">
@@ -15,63 +33,16 @@ const Footer = () => {
           <header className="footer-title">Tech Valley</header>
 
           <ul>
-            <li>
-              <Link
-                href="/cpu"
-                className="text-slate-200 hover:text-white text-base link-hover"
-              >
-                CPU / Processor
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/motherboard"
-                className="text-slate-200 hover:text-white text-base link-hover"
-              >
-                Motherboard
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/ram"
-                className="text-slate-200 hover:text-white text-base link-hover"
-              >
-                RAM
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/powersupply"
-                className="text-slate-200 hover:text-white text-base link-hover"
-              >
-                Power Supply Unit
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/storage"
-                className="text-slate-200 hover:text-white text-base link-hover"
-              >
-                Storage Device
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/monitor"
-                className="text-slate-200 hover:text-white text-base link-hover"
-              >
-                Monitor
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/others"
-                className="text-slate-200 hover:text-white text-base link-hover"
-              >
-                Others
-              </Link>
-            </li>
-
+            {uniqueCategories.map((category, i) => (
+              <li key={i}>
+                <Link
+                  href={`/products/${category}`}
+                  className="text-slate-200 hover:text-white text-base link-hover"
+                >
+                  {category}
+                </Link>
+              </li>
+            ))}
             {!session?.user && (
               <Link
                 href="/login"

@@ -1,9 +1,24 @@
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const Navbar = ({ categories }) => {
+const Navbar = () => {
   const { data: session } = useSession();
-  console.log(categories);
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      });
+  }, []);
+
+  const productCategories = categories.map((product) => product.category);
+  const uniqueCategories = productCategories.filter(
+    (category, index, currentVal) => currentVal.indexOf(category) === index
+  );
+
   return (
     <nav className="navbar bg-black flex justify-between">
       <Link
@@ -26,67 +41,16 @@ const Navbar = ({ categories }) => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52"
           >
-            {/* {categories.map((category) => ( */}
-            <>
-              <li>
+            {uniqueCategories.map((category, i) => (
+              <li key={i}>
                 <Link
-                  href=""
+                  href={`/products/${category}`}
                   className="text-slate-200 hover:text-white text-base"
                 >
-                  {/* {category} */}
+                  {category}
                 </Link>
               </li>
-            </>
-            {/* ))} */}
-
-            {/* <li>
-              <Link
-                href="/motherboard"
-                className="text-slate-200 hover:text-white text-base"
-              >
-                Motherboard
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/ram"
-                className="text-slate-200 hover:text-white text-base"
-              >
-                RAM
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/powersupply"
-                className="text-slate-200 hover:text-white text-base"
-              >
-                Power Supply Unit
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/storage"
-                className="text-slate-200 hover:text-white text-base"
-              >
-                Storage Device
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/monitor"
-                className="text-slate-200 hover:text-white text-base"
-              >
-                Monitor
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/others"
-                className="text-slate-200 hover:text-white text-base"
-              >
-                Others
-              </Link>
-            </li> */}
+            ))}
           </ul>
         </details>
 

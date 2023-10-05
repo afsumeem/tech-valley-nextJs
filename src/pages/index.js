@@ -1,4 +1,5 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import Navbar from "@/components/Shared/Navbar";
 import FeaturedCategories from "@/components/UI/FeaturedCategories";
 import FeaturedProducts from "@/components/UI/FeaturedProducts";
 import HeroSection from "@/components/UI/HeroSection";
@@ -7,6 +8,7 @@ import Head from "next/head";
 export default function Home({ products, categories }) {
   return (
     <>
+      {/* <Navbar categories={categories} /> */}
       <Head>
         <title>Tech Valley</title>
         <meta
