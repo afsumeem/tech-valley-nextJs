@@ -1,12 +1,29 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 const PCBuilder = ({ categories }) => {
   const selectedProducts = useSelector((state) => state.pcBuilder.products);
-  console.log(selectedProducts);
+  const router = useRouter();
+
+  const successAlert = () => {
+    toast.success("PC Build Successfully", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+    router.push("/");
+  };
   return (
     <div>
+      <ToastContainer />
       <div className="text-center my-4">
         <h2 className="font-bold text-4xl uppercase">Build Your PC</h2>
         <h5 className="text-xl mt-2">Select Your Components</h5>
@@ -22,7 +39,7 @@ const PCBuilder = ({ categories }) => {
               {selectedProducts &&
                 selectedProducts[category]?.map((compo, i) => (
                   <>
-                    <p>{compo.title}</p>
+                    <p>{compo.productName}</p>
                   </>
                 ))}
             </div>
@@ -43,7 +60,7 @@ const PCBuilder = ({ categories }) => {
       </div>
 
       {Object.keys(selectedProducts).length >= 5 ? (
-        <div onClick={notify} className="flex justify-center m-5">
+        <div onClick={successAlert} className="flex justify-center m-5">
           <button className=" btn bg-black text-white hover:text-black  border-t-0  border-b-2 transition duration-500 hover:border block m-auto">
             Complete Build
           </button>
@@ -55,9 +72,6 @@ const PCBuilder = ({ categories }) => {
           </button>
         </div>
       )}
-      {/* <button className="btn bg-black text-white hover:text-black  border-t-0  border-b-2 transition duration-500 hover:border block m-auto">
-        Complete Build
-      </button> */}
     </div>
   );
 };

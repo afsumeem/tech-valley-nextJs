@@ -7,12 +7,12 @@ import { useDispatch } from "react-redux";
 import ReactStars from "react-rating-stars-component";
 import RootLayout from "@/components/Layouts/RootLayout";
 
-const SelectProduct = ({ components }) => {
+const SelectProduct = ({ products }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const handleAddProduct = (component) => {
-    dispatch(addProduct({ category: component.category, component }));
+  const handleAddProduct = (product) => {
+    dispatch(addProduct({ category: product.category, product }));
     router.push("/pcbuilder");
   };
   return (
@@ -22,7 +22,7 @@ const SelectProduct = ({ components }) => {
       </h2>
 
       <div className="col-span-9 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center w-full pb-8">
-        {components.map((product, i) => (
+        {products.map((product, i) => (
           <div key={i}>
             <div key={product._id} className="flex justify-center ">
               <div className="card md:card-side w-full bg-base-100 shadow-xl px-4  ">
@@ -92,5 +92,5 @@ export async function getServerSideProps(context) {
   const data = await res.json();
   console.log(data);
 
-  return { props: { components: data } };
+  return { props: { products: data } };
 }
