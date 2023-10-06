@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
+
 import ReactStars from "react-rating-stars-component";
 
 //
@@ -24,10 +24,11 @@ const PCBuilder = ({ categories }) => {
       progress: undefined,
       theme: "dark",
     });
+
+    router.push("/");
   };
   return (
     <div>
-      <ToastContainer />
       <div className="text-center my-4">
         <h2 className="font-bold text-4xl uppercase">Build Your PC</h2>
         <h5 className="text-xl mt-2">Select Your Components</h5>
