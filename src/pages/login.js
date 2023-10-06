@@ -20,7 +20,7 @@ const LoginPage = () => {
           <button
             onClick={() =>
               signIn("google", {
-                callbackUrl: "https://tech-valley.vercel.app/",
+                callbackUrl: "https://tech-valley-next-js.vercel.app/",
               })
             }
             className="w-1/2 bg-green-800 px-4 py-2 flex gap-2 justify-center text-white items-center font-bold text-xl rounded"
@@ -32,7 +32,7 @@ const LoginPage = () => {
           <button
             onClick={() =>
               signIn("github", {
-                callbackUrl: "https://tech-valley.vercel.app/",
+                callbackUrl: "https://tech-valley-next-js.vercel.app/",
               })
             }
             className="w-1/2 bg-black px-4 py-2 flex gap-2 justify-center text-white items-center font-bold text-xl rounded mt-2"

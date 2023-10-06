@@ -2,8 +2,8 @@
 
 ## Tech Valley live link
 
-- [Tech Valley](https://tech-valley.vercel.app/)
-- https://tech-valley.vercel.app/
+- [Tech Valley](https://tech-valley-next-js.vercel.app/)
+- https://tech-valley-next-js.vercel.app/
 
 ## Github Repo (Frontend)
 
