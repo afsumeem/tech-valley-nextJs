@@ -24,7 +24,6 @@ const PCBuilder = ({ categories }) => {
       progress: undefined,
       theme: "dark",
     });
-    router.push("/");
   };
   return (
     <div>
