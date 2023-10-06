@@ -25,7 +25,7 @@
 - Display different categories like CPU, Monitor, Power Supply, Storage, etc. Each category should have a list of available components.
 
 - Allow users to browse components within each category.
-  Implement a selection mechanism (e.g., add to cart) for chosen components.
+  Implement a selection mechanism (e.g., pc builder) for chosen components.
 
 - Ensure the website is fully responsive, providing a seamless experience across various devices and screen sizes.
 
