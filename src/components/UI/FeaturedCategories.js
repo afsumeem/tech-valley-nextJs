@@ -9,7 +9,7 @@ const FeaturedCategories = ({ categories }) => {
         featured Categories
       </h2>
       <hr />
-      <div className=" col-span-9 px-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 items-center w-full  my-12">
+      <div className=" col-span-9 px-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 items-center w-full my-12 ">
         {categories.map((category, index) => (
           <Link key={index} href={`/products/${category}`}>
             <div className=" bg-slate-300 hover:bg-slate-500 transition duration-700 rounded-md shadow-2xl hover:text-white h-40 w-40 text-center items-center flex justify-center ">

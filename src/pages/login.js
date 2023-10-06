@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { BiLogoGithub } from "react-icons/bi";
 import { BiLogoGoogle } from "react-icons/bi";
 import RootLayout from "@/components/Layouts/RootLayout";
+import Link from "next/link";
 
 const LoginPage = () => {
   //
@@ -41,7 +42,7 @@ const LoginPage = () => {
           Back to{" "}
           <span className="text-blue-300 underline font-bold">
             {" "}
-            <a to="/">Home</a>
+            <Link href="/">Home</Link>
           </span>
         </h5>
       </div>

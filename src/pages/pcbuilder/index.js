@@ -42,7 +42,7 @@ const PCBuilder = ({ categories }) => {
             key={i}
             className="border-2 my-4 px-6 py-4 flex flex-col md:flex-row justify-between gap-5 items-center"
           >
-            <div className=" bg-slate-300 hover:bg-slate-500 transition duration-700 rounded-md hover:text-white h-24 w-28 text-center items-center flex justify-center hover:cursor-pointer">
+            <div className=" bg-slate-300 rounded-md h-24 w-28 text-center items-center flex justify-center">
               <h3 className="font-bold p-4">{category}</h3>
             </div>
             <div>
@@ -123,7 +123,7 @@ PCBuilder.getLayout = function getLayout(page) {
 //
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch("https://tech-vally-server.vercel.app/products");
   const data = await res.json();
 
   //categories

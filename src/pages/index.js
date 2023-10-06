@@ -32,7 +32,7 @@ Home.getLayout = function getLayout(page) {
 //fetch products from db
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch("https://tech-vally-server.vercel.app/products");
   const data = await res.json();
 
   //random products
@@ -50,6 +50,6 @@ export const getStaticProps = async () => {
       products: randomProducts,
       categories: uniqueCategories,
     },
-    revalidate: 10,
+    revalidate: 5,
   };
 };

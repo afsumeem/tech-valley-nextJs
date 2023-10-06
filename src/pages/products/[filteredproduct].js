@@ -1,7 +1,8 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import ReactStars from "react-rating-stars-component";
+
 import React from "react";
 
 const FilteredProducts = ({ products }) => {
@@ -35,13 +36,21 @@ const FilteredProducts = ({ products }) => {
                       {" "}
                       Category: {product.category}
                     </h5>
-                    <p className="text-3xl my-4">${product.price}</p>
+                    <p className="text-3xl mt-4">${product.price}</p>
+                    <ReactStars
+                      count={5}
+                      value={product.averageRating}
+                      size={24}
+                      edit={false}
+                      isHalf={true}
+                      emptyIcon={<i className="far fa-star"></i>}
+                      halfIcon={<i className="fa fa-star-half-alt"></i>}
+                      fullIcon={<i className="fa fa-star"></i>}
+                      activeColor="#ffd700"
+                    />
                     <div className="card-actions justify-end">
                       <div className="badge text-white bg-green-800 badge-outline w-20 h-7 rounded-none">
                         {product.status}
-                      </div>
-                      <div className="badge badge-outline w-20 h-7 rounded-none">
-                        {product.averageRating}*
                       </div>
                     </div>
                   </div>
@@ -63,7 +72,7 @@ FilteredProducts.getLayout = function getLayout(page) {
 //
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch("https://tech-vally-server.vercel.app/products");
   const products = await res.json();
 
   const paths = products?.map((product) => ({
@@ -79,7 +88,7 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { filteredproduct: category } = params;
   const res = await fetch(
-    `http://localhost:5000/filteredProducts?category=${category}`
+    `https://tech-vally-server.vercel.app/filteredProducts?category=${category}`
   );
   const products = await res.json();
 

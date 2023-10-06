@@ -12,7 +12,7 @@ const Footer = () => {
   //
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://tech-vally-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
@@ -28,7 +28,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black ">
-      <footer className="footer p-10 text-base-content flex justify-around">
+      <footer className="footer py-10 text-base-content flex flex-col md:flex-row justify-around items-center">
         <nav className="text-white">
           <header className="footer-title">Tech Valley</header>
 
@@ -62,13 +62,15 @@ const Footer = () => {
             )}
           </ul>
         </nav>
-        <nav className="text-white">
+        <nav className="text-white ">
           <header className="footer-title">Legal</header>
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
         </nav>
       </footer>
+
+      {/*  */}
       <footer className="footer px-10 py-4 border-t  text-base-content border-base-30">
         <aside className="items-center grid-flow-col">
           <span className="text-white text-3xl">

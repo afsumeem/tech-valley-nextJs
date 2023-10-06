@@ -23,7 +23,7 @@ const FeaturedProducts = ({ products }) => {
                       width={250}
                       alt="product"
                     />
-                    <div className="badge text-white bg-green-800 w-24 h-7 rounded-none mt-8">
+                    <div className="badge text-white bg-green-800 w-24 h-10 rounded-none mt-8">
                       {product.status}
                     </div>
                   </figure>

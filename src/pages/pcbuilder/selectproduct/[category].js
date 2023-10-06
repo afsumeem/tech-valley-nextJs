@@ -87,7 +87,7 @@ export async function getServerSideProps(context) {
   const { category: category } = params;
 
   const res = await fetch(
-    `http://localhost:5000/filteredProducts?category=${category}`
+    `https://tech-vally-server.vercel.app/filteredProducts?category=${category}`
   );
   const data = await res.json();
   console.log(data);
