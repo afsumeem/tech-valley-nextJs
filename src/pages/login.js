@@ -19,7 +19,9 @@ const LoginPage = () => {
         <div className=" flex flex-col items-center justify-center w-full">
           <button
             onClick={() =>
-              signIn("google", { callbackUrl: "http://localhost:3000/" })
+              signIn("google", {
+                callbackUrl: "https://tech-valley.vercel.app/",
+              })
             }
             className="w-1/2 bg-green-800 px-4 py-2 flex gap-2 justify-center text-white items-center font-bold text-xl rounded"
           >
@@ -29,7 +31,9 @@ const LoginPage = () => {
 
           <button
             onClick={() =>
-              signIn("github", { callbackUrl: "http://localhost:3000/" })
+              signIn("github", {
+                callbackUrl: "https://tech-valley.vercel.app/",
+              })
             }
             className="w-1/2 bg-black px-4 py-2 flex gap-2 justify-center text-white items-center font-bold text-xl rounded mt-2"
           >
